@@ -1,0 +1,4 @@
+xterm*background: black
+xterm*foreground: white
+
+Xft.dpi: 192
