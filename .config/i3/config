@@ -63,36 +63,6 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -194,10 +164,26 @@ bar {
 # ortcel #
 ##########
 
-exec --no-startup-id xrandr --output DP-4 --mode 3840x2160 --rate 144.00
-exec --no-startup-id feh --bg-max ~/images/bg/crown-close-up.png
-exec --no-startup-id picom
-exec --no-startup-id flameshot
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+m split h
+bindsym $mod+v split v
 
 mode "exit: [l]ougout, [r]eboot, [s]hutdown" {
     bindsym l exec i3-msg exit
@@ -208,3 +194,9 @@ mode "exit: [l]ougout, [r]eboot, [s]hutdown" {
 }
 
 bindsym $mod+x mode "exit: [l]ougout, [r]eboot, [s]hutdown"
+
+exec --no-startup-id xrandr --output DP-4 --mode 3840x2160 --rate 144.00
+exec --no-startup-id feh --bg-max ~/images/bg/crown-close-up.png
+exec --no-startup-id picom
+exec --no-startup-id flameshot
+exec --no-startup-id xbanish
