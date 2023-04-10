@@ -194,7 +194,17 @@ bar {
 # ortcel #
 ##########
 
-exec --no-startup-id setxkbmap -layout fr
 exec --no-startup-id xrandr --output DP-4 --mode 3840x2160 --rate 144.00
 exec --no-startup-id feh --bg-max ~/images/bg/crown-close-up.png
 exec --no-startup-id picom
+exec --no-startup-id flameshot
+
+mode "exit: [l]ougout, [r]eboot, [s]hutdown" {
+    bindsym l exec i3-msg exit
+    bindsym r exec systemctl reboot
+    bindsym s exec systemctl shutdown
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+bindsym $mod+x mode "exit: [l]ougout, [r]eboot, [s]hutdown"
