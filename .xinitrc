@@ -27,4 +27,10 @@ fi
 # ortcel #
 ##########
 
+# Disables the screen saver feature.
+xset s off &
+
+# Disables the display power saving feature.
+xset -dpms &
+
 exec i3
