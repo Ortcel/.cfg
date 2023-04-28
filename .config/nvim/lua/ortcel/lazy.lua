@@ -124,6 +124,8 @@ require("lazy").setup({
             { "hrsh7th/cmp-nvim-lua" },
 
             { "L3MON4D3/LuaSnip" },
+
+            { "simrat39/rust-tools.nvim" },
         },
         keys = {
             { "<leader>kd", "<cmd>LspZeroFormat<cr>" },
@@ -132,13 +134,48 @@ require("lazy").setup({
             local lsp = require("lsp-zero")
 
             lsp.preset("recommended")
-
-            lsp.ensure_installed({
-                "rust_analyzer",
-            })
-
+            lsp.skip_server_setup({ "rust_analyzer" })
             lsp.nvim_workspace()
             lsp.setup()
+
+            local rust_tools = require("rust-tools")
+
+            rust_tools.setup({
+                server = {
+                    on_attach = function(_, buffer)
+                        local opts = { buffer = buffer }
+
+                        -- lsp-zero defaults
+                        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                        vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+                        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                        vim.keymap.set("n", "<Ctrl-k>", vim.lsp.buf.signature_help, opts)
+                        vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
+                        vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+                        vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+                        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+                        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
+                        -- ortcel
+                        vim.keymap.set("n", "<leader>kd", vim.lsp.buf.format, opts)
+                    end,
+                    settings = {
+                        ["rust-analyzer"] = {
+                            checkOnSave = {
+                                command = "clippy",
+                            },
+                        },
+                    },
+                },
+                tools = {
+                    inlay_hints = {
+                        auto = false,
+                    },
+                },
+            })
         end,
         lazy = false,
     },
