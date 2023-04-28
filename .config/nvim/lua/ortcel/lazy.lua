@@ -23,17 +23,17 @@ require("lazy").setup({
             require("rose-pine").setup({
                 disable_italics = true,
                 highlight_groups = {
-                        ["@type.qualifier"] = { fg = "pine", },
-                        ["@storageclass"] = { fg = "pine", },
-                        ["@keyword.operator"] = { fg = "pine", },
-                        ["@punctuation"] = { fg = "subtle", },
-                        ["@field"] = { fg = "rose", },
-                        ["@property"] = { fg = "rose", },
-                        ["@parameter"] = { fg = "text", },
-                        ["@boolean"] = { fg = "gold", },
-                        ["@type.builtin"] = { fg = "love", },
-                        ["@constant.builtin"] = { fg = "love", },
-                        ["@variable.builtin"] = { fg = "love", },
+                    ["@type.qualifier"] = { fg = "pine", },
+                    ["@storageclass"] = { fg = "pine", },
+                    ["@keyword.operator"] = { fg = "pine", },
+                    ["@punctuation"] = { fg = "subtle", },
+                    ["@field"] = { fg = "rose", },
+                    ["@property"] = { fg = "rose", },
+                    ["@parameter"] = { fg = "text", },
+                    ["@boolean"] = { fg = "gold", },
+                    ["@type.builtin"] = { fg = "love", },
+                    ["@constant.builtin"] = { fg = "love", },
+                    ["@variable.builtin"] = { fg = "love", },
                 },
             })
 
@@ -42,13 +42,6 @@ require("lazy").setup({
             vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
         end,
     },
-
-    --{
-    --    "folke/tokyonight.nvim",
-    --    config = function()
-    --        vim.cmd([[colorscheme tokyonight]])
-    --    end,
-    --},
 
     {
         "nvim-telescope/telescope.nvim",
@@ -131,7 +124,6 @@ require("lazy").setup({
             { "hrsh7th/cmp-nvim-lua" },
 
             { "L3MON4D3/LuaSnip" },
-            --{ "rafamadriz/friendly-snippets" },
         },
         keys = {
             { "<leader>kd", "<cmd>LspZeroFormat<cr>" },
